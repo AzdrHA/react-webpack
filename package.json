@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:prod": "npx webpack serve --open --progress --mode=development",
+    "start:prod": "npx webpack serve --open --progress --mode=production",
     "start:dev": "npx webpack serve --open --progress --mode=development",
     "build:dev": "npx webpack --progress --mode=development",
     "build:prod": "npx webpack --progress --mode=production"
