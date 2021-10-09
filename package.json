@@ -14,8 +14,14 @@
     "type": "git",
     "url": "git+https://github.com/AzdrHA/react-webpack.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "react",
+    "reacthjs",
+    "reactts",
+    "typescript",
+    "webpack"
+  ],
+  "author": "AzdrHa",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AzdrHA/react-webpack/issues"
