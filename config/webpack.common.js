@@ -3,13 +3,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
+const {srcDir, assetsDir, distDir, publicDir, projectDir} = require('./webpack.config');
 
 module.exports = {
   entry: {
-    index: ['./src/index.tsx'],
+    index: [path.join(srcDir, 'index.tsx')],
   },
   output: {
-    path: path.join(__dirname, '../dist'),
+    path: distDir,
     publicPath: '/',
     clean: true,
   },
@@ -17,18 +19,21 @@ module.exports = {
     modules: ['src', 'node_modules'],
     extensions: ['.tsx', '.jsx', '.ts', '.js'],
     alias: {
-      '@images': path.resolve(__dirname, '../src/assets/images'),
-      '@scss': path.resolve(__dirname, '../src/assets/scss'),
-      '@components': path.resolve(__dirname, '../src/components'),
-      '@screens': path.resolve(__dirname, '../src/screens'),
-      '@app': path.resolve(__dirname, '../src'),
+      '@images': path.join(assetsDir, 'images'),
+      '@scss': path.join(assetsDir, 'scss'),
+      '@components': path.join(srcDir, 'components'),
+      '@screens': path.join(srcDir, 'screens'),
+      '@app': srcDir,
     },
   },
   plugins: [
+    new Dotenv({
+      path: path.join(projectDir, '.env'),
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.join(__dirname, '../public', 'index.html'),
-      favicon: path.join(__dirname, '../public', 'favicon.ico'),
+      template: path.join(publicDir, 'index.html'),
+      favicon: path.join(publicDir, 'favicon.ico'),
       cache: false,
       inject: 'head',
     }),
@@ -36,8 +41,8 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         {
-          from: path.join(__dirname, '../public'),
-          to: path.join(__dirname, '../dist'),
+          from: publicDir,
+          to: distDir,
           globOptions: {
             ignore: [
               '**/favicon.ico',
@@ -50,7 +55,7 @@ module.exports = {
   ],
   devServer: {
     static: {
-      directory: path.join(__dirname, '../dist'),
+      directory: distDir,
     },
     historyApiFallback: true,
     compress: true,
@@ -92,5 +97,4 @@ module.exports = {
       },
     ],
   },
-
 };
