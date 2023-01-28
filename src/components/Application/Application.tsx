@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import logo from '@images/logo.svg';
-import '@scss/app.scss';
+import './applications.scss';
 
-const Application: FC = () => {
+const Application : FC = () => {
   return (
     <div className="App">
       <header className="App-header">

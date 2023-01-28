@@ -1,13 +1,11 @@
-import React from 'react';
+import React, {FC} from 'react';
 import Application from '@components/Application/Application';
+import './home.scss';
 
 export type HomeProps = {};
-export type HomeState = {};
 
-class Home extends React.Component<HomeProps, HomeState> {
-  render() {
-    return <Application/>;
-  }
-}
+const Home : FC<HomeProps> = () => {
+  return <Application/>;
+};
 
 export default Home;
