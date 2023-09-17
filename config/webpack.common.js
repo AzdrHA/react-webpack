@@ -59,7 +59,7 @@ module.exports = {
     },
     historyApiFallback: true,
     compress: true,
-    port: 3000,
+    port: process.env.FRONT_PORT,
     hot: true,
   },
   watchOptions: {

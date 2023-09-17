@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    volumes:
+      - .:/srv/app:rw,cached
+    stdin_open: true
+    ports:
+      - "${FRONT_PORT}:${FRONT_PORT}"
+    restart: always
+    env_file:
+      - .env
