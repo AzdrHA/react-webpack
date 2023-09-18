@@ -1,14 +1,21 @@
 # Getting Started
 
 ```bash
+# build image
+$ make build
+
+# run container
+$ make start
+
+# stop container
+$ make stop
+
+# restart container
+$ make restart
+
 # install dependencies
-$ npm install
+$ make install
 
-# serve with hot reload at localhost:8080
-$ npm run start:dev
-$ npm run start:prod
-
-# build project
-$ npm run build:dev
-$ npm run buid:prod
+# run to terminal
+$ make sh
 ```

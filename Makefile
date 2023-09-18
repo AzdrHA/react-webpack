@@ -11,7 +11,7 @@ build:
 	@docker-compose build
 
 install:
-	@docker-compose run --rm web npm install
+	@docker-compose run --rm react npm install
 
 sh:
-	@docker-compose run --rm web sh
+	@docker-compose run --rm react sh
