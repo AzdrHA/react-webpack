@@ -1,18 +1,18 @@
-import type ITask from 'models/ITask';
-import React, { type FC } from 'react';
+import React, { type FC, useEffect } from 'react';
 import SingleTask from './SingleTask';
+import { useSelector } from 'react-redux';
+import { completeTasks, incompleteTasks, selectTasks } from '@app/store/task';
 
-interface ITaskListProps {
-  tasks: ITask[];
-  setActiveTasksLeft: (tasks: ITask[]) => void;
-}
+const TaskList: FC = () => {
+  const tasksSelector = useSelector(selectTasks);
 
-const TaskList: FC<ITaskListProps> = ({ tasks, setActiveTasksLeft }) => {
   return (
     <div>
-      {tasks.map(task => (
-        <SingleTask task={task} setActiveTasksLeft={setActiveTasksLeft} key={task.id} />
-      ))}
+      {
+        tasksSelector.map(task => (
+          <SingleTask task={task} key={task.id} />
+        ))
+      }
     </div>
   );
 };
